@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 12:34:06 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 14:52:54 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 12:29:52 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
+
 }					t_list;
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);

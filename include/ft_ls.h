@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:45:59 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 14:40:03 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 13:05:08 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int			elemget(t_file **files, struct dirent *file, char *path, t_option opt);
 void		elemgetfiles(t_file **files, char *name, char *path, t_option opt);
 void		ls_simple(t_option opt, t_file *files);
 void		ls_long(t_option opt, t_file *cur);
-void		core(t_option opt, t_list *path, int multidir);
+void		core(t_option opt, t_list *path);
 blksize_t	get_size(t_file *list);
 void		ft_islink(t_file *file);
 void		display_file(t_option opt, t_file *files, int type);
-void		do_ls_dir2(t_option opt, t_file *dirlist, int multidir);
-void		do_ls_dir(t_option opt, t_list *path, int multidir);
+void		do_ls_dir2(t_option opt, t_file *dirlist);
+void		do_ls_dir(t_option opt, t_list *path);
 void		do_ls_file(t_option opt, t_list *path);
 void		put_size(t_file *files);
 int			one_of(char c, char *str);

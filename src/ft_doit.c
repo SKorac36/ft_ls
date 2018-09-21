@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 08:51:25 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 15:24:12 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 13:50:32 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,48 +23,37 @@ void	display_file(t_option opt, t_file *files, int type)
 		ls_long(opt, cur);
 	else if (opt.option_1 == 1 || opt.option_l == 0)
 		ls_simple(opt, cur);
-	
 }
 
-char	*ft_linked(char *path)
-{
-	return (ft_strjoin(path, "/"));
-}
-
-void	do_ls_dir2(t_option opt, t_file *dirlist, int multidir)
+void	do_ls_dir2(t_option opt, t_file *dirlist)
 {
 	DIR		*dir;
 
 	t_file	*files;
 	int		first;
 	char	*lnk;	
-	char 	*cln;	
+	
 	first = 0;
 	files = NULL;
 	while (dirlist)
 	{
 		dir = opendir(dirlist->name);	
-		lnk = ft_linked(dirlist->path);
+		lnk = ft_strjoin(dirlist->name, "/");
 		while (elemget(&files, readdir(dir), lnk, opt) != 0)
 			;
-		closedir(dir);
 		if (files)
 		{
 			first == 1 ? ft_putchar('\n') : NULL;
-			cln = ft_strjoin(dirlist->name, ":");
-			multidir ? ft_putendl(cln) : NULL;
 			first = 1;
 			display_file(opt, files, 1);
 		}
-		files = NULL;
-		free(lnk);
-		free(cln);
 		dirlist = dirlist->next;
 	}
-	printf("dirlist: %p\n", dirlist);
+	free(lnk);
+	closedir(dir);
 }
 
-void	do_ls_dir(t_option opt, t_list *path, int multidir)
+void	do_ls_dir(t_option opt, t_list *path)
 {
 	t_list *cur;
 	t_file *dirlist;
@@ -77,8 +66,9 @@ void	do_ls_dir(t_option opt, t_list *path, int multidir)
 		cur = cur->next;
 	}
 	dirlist = ft_sortfiles(dirlist, opt);
-	do_ls_dir2(opt, dirlist, multidir);
+	do_ls_dir2(opt, dirlist);
 	erase_list(&cur);
+	free(&dirlist->name);
 }
 
 void	do_ls_file(t_option opt, t_list *path)
@@ -98,7 +88,7 @@ void	do_ls_file(t_option opt, t_list *path)
 		display_file(opt, files, 0);
 }
 
-void	core(t_option opt, t_list *path, int multidir)
+void	core(t_option opt, t_list *path)
 {
 	DIR		*dir;
 	t_list	*file;
@@ -106,7 +96,7 @@ void	core(t_option opt, t_list *path, int multidir)
 	t_list	*cur;
 
 	file = NULL;
-	directory = NULL;
+	directory = NULL;	
 	cur = path;
 	while (cur)
 	{
@@ -119,14 +109,11 @@ void	core(t_option opt, t_list *path, int multidir)
 			if (closedir(dir) == -1)
 				basicerror("ft_ls: ", cur->content, 0);
 		}
-		//free(&cur->content);
-		//free(&cur);
-		//erase_list(&cur);
 		cur = cur->next;
 	}
 	file ? do_ls_file(opt, file) : NULL;
 	file && directory ? ft_putchar('\n') : NULL;
-	directory ? do_ls_dir(opt, directory, multidir) : NULL;
+	directory ? do_ls_dir(opt, directory) : NULL;
 	erase_list(&directory);
 	erase_list(&file);
 	erase_list(&cur);

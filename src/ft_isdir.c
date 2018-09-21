@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size.c                                          :+:      :+:    :+:   */
+/*   ft_isdir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/17 09:24:28 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/21 11:13:35 by skorac           ###   ########.fr       */
+/*   Created: 2018/09/21 12:41:29 by skorac            #+#    #+#             */
+/*   Updated: 2018/09/21 12:41:41 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
-
-blksize_t	get_size(t_file *list)
+int		ft_isdir(const char *path)
 {
-	t_file		*tmp;
-	blksize_t	ret;
+	struct stat	st;
 
-	ret = 0;
-	tmp = list;
-	while (tmp)
-	{
-		ret += tmp->blk;
-		tmp = tmp->next;
-	}
-	return (ret);
+	stat(path, &st);
+	return (S_ISDIR(st.st_mode));
 }

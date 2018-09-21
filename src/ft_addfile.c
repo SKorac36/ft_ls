@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 07:32:54 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 13:19:17 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 13:14:08 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	mode_to_letters(int mode)
 	ft_putchar((mode & S_IROTH) ? 'r' : '-');
 	ft_putchar((mode & S_IWOTH) ? 'w' : '-');
 	ft_putchar((mode & S_IXOTH) ? 'x' : '-');
-	ft_putstr("\t");	
+	ft_putstr("\t");
 }

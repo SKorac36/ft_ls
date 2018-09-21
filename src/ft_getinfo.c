@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 08:53:32 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/18 14:12:46 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 11:08:52 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	uid_to_name(uid_t uid)
 		free(numstr);
 	}
 	else
-	ft_putstr(pw_ptr->pw_name);
+		ft_putstr(pw_ptr->pw_name);
 	ft_putchar('\t');
 }
 
@@ -57,9 +57,9 @@ void	time_to_name(time_t date)
 	time_t		actualtime;
 
 	actualtime = time(0);
-	str1 = (ctime(&date));;
+	str1 = (ctime(&date));
 	if ((actualtime - 15778463) > date || actualtime < date)
-{
+	{
 		str2 = ft_strnew(6);
 		str2 = ft_strsub(str1, 20, 4);
 		str1 = ft_strsub(str1, 4, 6);

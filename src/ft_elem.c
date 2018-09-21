@@ -6,7 +6,7 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 09:47:33 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 14:46:33 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/21 13:51:02 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ t_file	*elemnew(char *name, char *path, t_option opt)
 	t_file		*new;
 	struct stat	info_p;
 	char		*pth;
-	
+
 	(void)opt;
-	new = (t_file*)malloc(sizeof(t_file));;
+	new = malloc(sizeof(t_file));
 	new->name = name;
 	pth = ft_strjoin(path, new->name);
 	new->path = pth;
 	if (lstat(new->path, &info_p) == -1)
 		return (NULL);
 	free(pth);
-	new->mode = info_p.st_mode;	
+	new->mode = info_p.st_mode;
 	new->time = info_p.st_mtime;
 	new->usr = info_p.st_uid;
 	new->grp = info_p.st_gid;
@@ -34,9 +34,8 @@ t_file	*elemnew(char *name, char *path, t_option opt)
 	new->size = ((int)info_p.st_size);
 	new->blk = ((blksize_t)(info_p.st_blocks));
 	new->next = NULL;
-	printf("elemname:%s %p\n",new->name, new);
+	printf("address: %p name: %s\n", new, new->name);
 	return (new);
-
 }
 
 int		elemget(t_file **files, struct dirent *file, char *path, t_option opt)
@@ -51,7 +50,6 @@ int		elemget(t_file **files, struct dirent *file, char *path, t_option opt)
 		while (list->next)
 			list = list->next;
 		list->next = elemnew(file->d_name, path, opt);
-		list = NULL;
 	}
 	else
 		*files = elemnew(file->d_name, path, opt);
