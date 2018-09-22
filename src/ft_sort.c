@@ -6,11 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 11:11:35 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/18 13:24:10 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/22 13:28:22 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
+#include "../includes/ft_ls.h"
 
 t_file	*ft_sortfiles(t_file *list, t_option opt)
 {

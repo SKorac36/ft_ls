@@ -6,27 +6,33 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 09:21:35 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 14:42:51 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/22 13:27:18 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
+#include "../includes/ft_ls.h"
 
-void	ft_free(t_file *file)
+void	delete_content(void *info, size_t size)
 {
-	free(file->name);
-	free(file->path);
-	free(file);
+	free(info);
+	info = NULL;
+	(void)size;
 }
 
-void	del(void *d, size_t s)
+void	erase_list(t_list **directories)
 {
-	d = NULL;
-	s = 0;
+	void	(*del)(void *, size_t);
+
+	del = &delete_content;
+	ft_lstdel(directories, del);
 }
 
-void	lstfree(t_list **lst)
+void	destroyevidence(t_list *a, t_list *b, t_list *c)
 {
-	ft_lstdel(lst, &del);
-	free(*lst);
+	if (a)
+		erase_list(&a);
+	if (b)
+		erase_list(&b);
+	if (c)
+		erase_list(&c);
 }

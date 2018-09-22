@@ -6,11 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 08:53:32 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/18 14:12:46 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/22 13:27:28 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
+#include "../includes/ft_ls.h"
 
 void	uid_to_name(uid_t uid)
 {
@@ -27,7 +27,7 @@ void	uid_to_name(uid_t uid)
 		free(numstr);
 	}
 	else
-	ft_putstr(pw_ptr->pw_name);
+		ft_putstr(pw_ptr->pw_name);
 	ft_putchar('\t');
 }
 
@@ -57,9 +57,9 @@ void	time_to_name(time_t date)
 	time_t		actualtime;
 
 	actualtime = time(0);
-	str1 = (ctime(&date));;
+	str1 = (ctime(&date));
 	if ((actualtime - 15778463) > date || actualtime < date)
-{
+	{
 		str2 = ft_strnew(6);
 		str2 = ft_strsub(str1, 20, 4);
 		str1 = ft_strsub(str1, 4, 6);

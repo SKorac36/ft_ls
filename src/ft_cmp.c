@@ -6,11 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 09:35:15 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/18 12:53:41 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/22 13:26:42 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
+#include "../includes/ft_ls.h"
 
 int	ft_cmp(t_file *a, t_file *b)
 {

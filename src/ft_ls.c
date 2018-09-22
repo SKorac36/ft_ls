@@ -6,11 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 10:30:26 by skorac            #+#    #+#             */
-/*   Updated: 2018/09/19 15:19:48 by skorac           ###   ########.fr       */
+/*   Updated: 2018/09/22 13:49:51 by skorac           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ls.h"
+#include "../includes/ft_ls.h"
 
 int		one_of(char c, char *str)
 {
@@ -70,39 +70,17 @@ void	get_param(int nb, char **param, t_option *arg, t_list **path)
 	}
 }
 
-void	delete_content(void *info, size_t size)
-{
-//	free(((t_file *)info)->path);
-//	free(((t_file *)info)->path);
-	free(info);
-	info = NULL;
-	(void)size;
-}
-
-void	erase_list(t_list **directories)
-{
-	void	(*del)(void *, size_t);
-
-	del = &delete_content;
-	ft_lstdel(directories, del);
-}
-
-int		main(int ac, char **av)
+int		main(int argc, char **argv)
 {
 	t_option	arg;
 	t_list		*path;
-//	unsigned int	slp;
-	
+
 	arg = (t_option){0, 0, 0, 0, 0};
 	path = NULL;
-	if (ac > 1)
-		get_param(ac - 1, av, &arg, &path);
+	if (argc > 1)
+		get_param(argc - 1, argv, &arg, &path);
 	if (path == NULL)
-		path = ft_lstnew(".", 1);		
-	core(arg, path, path->next != NULL ? 1 : 0);	
-	printf("%p\n", path);
-	erase_list(&path);
-//	path->next = NULL;
-	sleep(6);
+		path = ft_lstnew(".", 1);
+	justdoit(arg, path);
 	return (0);
 }
