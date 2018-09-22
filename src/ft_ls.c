@@ -6,7 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 10:30:26 by skorac            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/09/22 13:49:51 by skorac           ###   ########.fr       */
+=======
+/*   Updated: 2018/09/21 13:35:53 by skorac           ###   ########.fr       */
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +74,27 @@ void	get_param(int nb, char **param, t_option *arg, t_list **path)
 	}
 }
 
+<<<<<<< HEAD
 int		main(int argc, char **argv)
+=======
+void	delete_content(void *info, size_t size)
+{
+	free(info);
+	info = NULL;
+
+	(void)size;
+}
+
+void	erase_list(t_list **directories)
+{
+	void	(*del)(void *, size_t);
+
+	del = &delete_content;
+	ft_lstdel(directories, del);
+}
+
+int		main(int ac, char **av)
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 {
 	t_option	arg;
 	t_list		*path;
@@ -80,7 +104,13 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 		get_param(argc - 1, argv, &arg, &path);
 	if (path == NULL)
+<<<<<<< HEAD
 		path = ft_lstnew(".", 1);
 	justdoit(arg, path);
+=======
+		path = ft_lstnew(".", 1);		
+	core(arg, path);
+	sleep(6);
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 	return (0);
 }

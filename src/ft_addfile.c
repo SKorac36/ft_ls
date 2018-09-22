@@ -6,7 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/03 07:32:54 by skorac            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/09/22 13:26:32 by skorac           ###   ########.fr       */
+=======
+/*   Updated: 2018/09/21 13:14:08 by skorac           ###   ########.fr       */
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +33,7 @@ void	mode_to_letters(int mode)
 	grp(mode);
 	ft_putchar((mode & S_IROTH) ? 'r' : '-');
 	ft_putchar((mode & S_IWOTH) ? 'w' : '-');
+<<<<<<< HEAD
 	stk(mode);
 	ft_putstr("\t");
 }
@@ -61,4 +66,8 @@ void	stk(int mode)
 		ft_putchar('x');
 	else
 		ft_putchar('-');
+=======
+	ft_putchar((mode & S_IXOTH) ? 'x' : '-');
+	ft_putstr("\t");
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 }

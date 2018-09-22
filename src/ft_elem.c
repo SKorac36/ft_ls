@@ -6,7 +6,11 @@
 /*   By: skorac <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 09:47:33 by skorac            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/09/22 13:26:59 by skorac           ###   ########.fr       */
+=======
+/*   Updated: 2018/09/21 13:51:02 by skorac           ###   ########.fr       */
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +38,10 @@ t_file	*elemnew(char *name, char *path, t_option opt)
 	new->size = ((int)info_p.st_size);
 	new->blk = ((blksize_t)(info_p.st_blocks));
 	new->next = NULL;
+<<<<<<< HEAD
+=======
+	printf("address: %p name: %s\n", new, new->name);
+>>>>>>> f3de50c6ed15094e78a22e7f16d73347b60f3200
 	return (new);
 }
 
